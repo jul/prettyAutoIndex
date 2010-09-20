@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Gallerie mimine automatique</title>
+
+        <link type="text/css" href="/org/css/cupertino/jquery-ui-1.8.5.custom.css" rel="stylesheet" />   
+        <link type="text/css" href="/org/css/jqModal.css" rel="stylesheet" />   
+
+        <script type="text/javascript" src="/org/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="/org/js/jqModal.js"></script>
+        <script type="text/javascript" src="/org/js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+                $('a').each( function () { $(this).attr("id",$(this).attr("href")) });
+            $('#image').jqm(  { overlay: 50,  } );
+
+            function loadme(el) { 
+                var link=$(el).attr("href");
+                var prev= '<button id=prev  >&lt;&lt;</button>';
+                var next= '<button id=next  >&gt;&gt;</button>';
+                $('#image').html( prev + 'image <a href="' + link   + '">' +
+                    link +'</a>' + next + 
+                    '<button style="float:right" id=close >X</button>' + 
+                    '<img width=500 src="' + link + '" />');
+
+                $("button").button();
+                $("#next").click(function() { $(el).next().mouseover() });
+                $("#prev").click(function() { $(el).prev().mouseover() });
+                $("#close").click(function() { $('#image').jqmHide() } );
+                $('#image').jqmShow();
+            }
+            loadme($('a')[0]);
+            $('#image').jqmShow();
+            $('a').mouseover(function() { 
+                loadme(this);
+                
+            }
+            );
+ 
+			});
+		</script>
+	</head>
+<body>
+<div id=image class=jqmWindow>
+</div>
+
