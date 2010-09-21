@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>Gallerie mimine automatique</title>
 
+        <link type="text/css" href="/org/css/site.css" rel="stylesheet" />   
         <link type="text/css" href="/org/css/jqModal.css" rel="stylesheet" />   
         <link type="text/css" href="/org/css/cupertino/jquery-ui-1.8.5.custom.css" rel="stylesheet" />   
 
@@ -12,32 +13,47 @@
         <script type="text/javascript" src="/org/js/jquery-ui-1.8.5.custom.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-
                 $('a').each( function () { $(this).attr("id",$(this).attr("href")) });
             $('#image').jqm(  { overlay: 50, width:900, } );
-
+            function imrot(angle) { 
+                $('#img').css("-webkit-transform",  'rotate(' + angle + 'deg)');
+                $('#img').css("-moz-transform",  'rotate(' + angle + 'deg)');
+            }
             function loadme(el) { 
                 var link=$(el).attr("href");
+                var rot1="<button id=rot1 >+90</button>";
+                var rot2="<button id=rot2 >+180</button>";
+                var rot3="<button id=rot3 >-90</button>";
+                var rot4="<button id=rot4 >2 &pi;</button>";
                 var prev= '<p style="text-align:center"><button id=prev  >&lt;&lt;</button>';
-                var next= '<button id=next  >&gt;&gt;</button>';
+                var next= '<button id=next  >&gt;&gt;</button> ';
                 $('#image').html( prev + 'image : ' + link   +  next + 
+                    rot1 + rot2 + rot3 + rot4 +
                     '<button style="float:right" id=close >X</button>' + 
-                    '<a href="' + link + '"><img width="500px" src="' + link + '" /></a></p>');
+                    '<div id=imgc ><a href="' + link + '"><img id=img width="500px" src="' + link + '" /></a></div></p>');
 
-                $("button").button();
+                //$("button").button();
                 $("#next").click(function() { $(el).next().click() });
                 $("#prev").click(function() { $(el).prev().click() });
+                $('#rot1').click(function() { 
+                    imrot(90);
+                });
+                $('#rot2').click(function() { 
+                    imrot(180);
+                });
+                $('#rot3').click(function() { 
+                    imrot(270);
+                });
+                $('#rot4').click(function() { 
+                    imrot(0);
+                });
                 $("#close").click(function() { $('#image').jqmHide() } );
                 $('#image').jqmShow();
             }
-            //loadme($('a')[0]);
-        //    $('#image').jqmShow();
             $('a').click(function(event) { 
-            event.preventDefault();
-
-                loadme(this);
-                
-            }
+                    event.preventDefault();
+                    loadme(this);
+                }
             );
  
 			});
@@ -46,6 +62,9 @@
 <body>
 <h1>Lazy Browsing avec jquery par défaut sur apache</h1>
 (c) Jul
-<div id=image class=jqmWindow>
+<img src="http://www.eldar.org/cgi-bin/fortune.pl?background=transparent" />
+<br/>
+<div id=image class="jqmWindow">
+
 </div>
 
