@@ -4,31 +4,48 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>Gallerie mimine automatique</title>
 
-        <link type="text/css" href="/org/css/prettyPhoto.css" rel="stylesheet" />   
+        <link type="text/css" href="/org/css/jqModal.css" rel="stylesheet" />   
+        <link type="text/css" href="/org/css/cupertino/jquery-ui-1.8.5.custom.css" rel="stylesheet" />   
 
-e       <script type="text/javascript" src="/org/js/jquery-1.4.2.min.js"></script>
-        <script type="text/javascript" src="/org/js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="/org/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="/org/js/jqModal.js"></script>
+        <script type="text/javascript" src="/org/js/jquery-ui-1.8.5.custom.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-                   $('a').each( function() { 
-                        $(this).attr("alt",$(this).attr("href")) ;
-                        $(this).attr("href",'#') ;
-                        
-                         } );
 
-                   $('a').prettyPhoto({theme: 'light_rounded',
-                    slideshow:3000, autoplay_slideshow:true}); 
-                   $('a').each( function() { 
-                        $(this).attr("href",$(this).attr("alt")) ;
-                        $(this).attr("title",$(this).attr("alt")) ;
-                        
-                         } );
-			});
+                $('a').each( function () { $(this).attr("id",$(this).attr("href")) });
+            $('#image').jqm(  { overlay: 50, width:900, } );
+
+            function loadme(el) { 
+                var link=$(el).attr("href");
+                var prev= '<p style="text-align:center"><button id=prev  >&lt;&lt;</button>';
+                var next= '<button id=next  >&gt;&gt;</button>';
+                $('#image').html( prev + 'image : ' + link   +  next + 
+                    '<button style="float:right" id=close >X</button>' + 
+                    '<a href="' + link + '"><img width="500px" src="' + link + '" /></a></p>');
+
+                $("button").button();
+                $("#next").click(function() { $(el).next().click() });
+                $("#prev").click(function() { $(el).prev().click() });
+                $("#close").click(function() { $('#image').jqmHide() } );
+                $('#image').jqmShow();
+            }
+            //loadme($('a')[0]);
+        //    $('#image').jqmShow();
+            $('a').click(function(event) { 
+            event.preventDefault();
+
+                loadme(this);
                 
-                            
+            }
+            );
+ 
+			});
 		</script>
 	</head>
 <body>
+<h1>Lazy Browsing avec jquery par défaut sur apache</h1>
+(c) Jul
 <div id=image class=jqmWindow>
 </div>
 

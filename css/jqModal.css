@@ -3,9 +3,25 @@
 
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
-	
+h1 { 
+font-family:Trebuchet MS,Arial,Sans,sans-serif;
+font-size:150%;
+font-variant:small-caps;
+font-weight:bold;
+}
+
+img {
+border:0;
+padding: 5px 5px 5px 15px;
+     -moz-border-radius: 15px;
+     border-radius: 15px;
+}
+body { 
+    background-color: #E0F0FF;
+}
 .jqmWindow {
     display: none;
+box-shadow: 10px 10px 5px #888;
     
     position: fixed;
     top: 5%;
@@ -14,6 +30,8 @@
     margin-left: -300px;
     width: 600px;
     
+     -moz-border-radius: 15px;
+     border-radius: 15px;
     background-color: #EEE;
     color: #333;
     border: 1px solid black;
