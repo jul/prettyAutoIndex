@@ -1,0 +1,10 @@
+
+
+    IndexOptions FancyIndexing NameWidth=* SuppressIcon SuppressHTMLPreamble SuppressColumnSorting
+#SuppressLastModified SuppressSize SuppressColumnSorting SuppressDescription SuppressRules
+    HeaderName /org/header.html
+    ReadmeName /org/footer.html
+
+    IndexIgnore .??* *~ *# HEADER* README* RCS CVS *,v *,t org desc.html
+ServerSignature Off
+
