@@ -17,7 +17,7 @@
                 $('#image').html( prev + 'image : ' + link   +  next + 
                         rot1 + rot2 + rot3 + rot4 +
                         '<button style="float:right" id=close >X</button>' + 
-                        '<div id=imgc ><a href="' + link + '"><img id=img width="500px" src="' + link + '" /></a></div></p>');
+                        '<div id=imgc ><a href="' + link + '"><img id=img width=500px  src="' + link + '" /></a></div></p>');
 
                 //$("button").button();
                 $("#next").click(function() { $(el).next().click() });
