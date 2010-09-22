@@ -1,5 +1,10 @@
 $(document).ready(
     function() { 
+            $('a').each( function() { 
+                if( $(this).attr("href").match("/$") ) {
+                    $(this).addClass("noimage");
+                }
+            });
         $("#desc").load("./desc.html", function () { 
         if( 'prism' ==  $('input[name=theme]').val()) { 
             $.getScript("/org/js/jquery.prettyPhoto.js", function() { 
