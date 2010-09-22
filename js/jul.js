@@ -5,6 +5,23 @@
             $('#img').css("-webkit-transform",  'rotate(' + angle + 'deg)');
             $('#img').css("-moz-transform",  'rotate(' + angle + 'deg)');
             }
+            function embed(link,width) { 
+                if( link.match('ogg$') ) { 
+                    return ('<video autoplay width="' + width +
+                    '" src="' + link + '" controls=true >' +
+                    'to watch video please use a real web browser</video>' +
+                    '<br/><a href="' +link + '">Here</a>' );
+                }
+                if( link.match('avi$') ) { 
+                    return( '<embed width="100%" height="100%"  name="plugin" src="' +
+                    link + '" type="video/x-msvideo" >' + 
+                    '<br/><a href="' +link + '">Here</a>' );
+                } 
+
+                return ( '<a href="' + link + '"><img id=img width="' + 
+                    width + '"  src="' + link + '" /></a>');
+
+             }
             function loadme(el) { 
                 var link=$(el).attr("href");
 
@@ -17,7 +34,7 @@
                 $('#image').html( prev + 'image : ' + link   +  next + 
                         rot1 + rot2 + rot3 + rot4 +
                         '<button style="float:right" id=close >X</button>' + 
-                        '<div id=imgc ><a href="' + link + '"><img id=img width=500px  src="' + link + '" /></a></div></p>');
+                           embed(link, "500px") + '</div></p>');
 
                 //$("button").button();
                 $("#next").click(function() { $(el).next().click() });
