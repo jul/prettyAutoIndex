@@ -72,7 +72,7 @@ function embed(link,width) {
            
 
            
-$('a').not('.noimage').each( 
+$('pre > a').not('.noimage').each( 
         function () { $(this).attr("id",$(this).attr("href")) }
 );
 
@@ -119,7 +119,7 @@ function loadme(el) {
     });   
     $('#image').dialog('open');
 }
-$('a').not('.noimage').click(function(event) { 
+$('pre > a').not('.noimage').click(function(event) { 
         event.preventDefault();
         loadme(this);
         }

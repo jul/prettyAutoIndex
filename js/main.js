@@ -12,11 +12,18 @@ $(document).ready(
                     }
                 );
             } else { 
-                $.getScript("/org/js/jquery-ui-1.8.5.custom.min.js", 
-                    function () { 
-                        $.getScript("/org/js/jul.js");
+                $.getScript("http://jqueryui.com/themeroller/themeswitchertool/",
+                    function() { 
+                        $('#switcher').themeswitcher( { loadTheme : "Cuppertino" } ); 
+                        $('#switcher > a').addClass("noimage");
+                        $.getScript("/org/js/jquery-ui-1.8.5.custom.min.js", 
+                            function () { 
+                                $.getScript("/org/js/jul.js");
+                            }
+                        );
+
                     }
-                );
+                ); 
             }
         });
     }
