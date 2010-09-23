@@ -59,7 +59,7 @@ function embed(link,width) {
         'to watch video please use a real web browser</video>' +
         '<br/><a href="' +link + '">Here</a>' );
     }
-    if( link.match('avi$') ) { 
+    if( link.match('(mpe?g|avi)$') ) { 
         return( '<embed width="' + width + '" height="' + width + '"  name="plugin" src="' +
         link + '" type="video/x-msvideo" >' + 
         '<br/><a href="' +link + '">Here</a><br/>' );
