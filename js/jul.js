@@ -1,4 +1,6 @@
 //from phpjs
+
+
 function realpath (path) {
     // http://kevin.vanzonneveld.net
     // +   original by: mk.keck
@@ -33,8 +35,13 @@ function realpath (path) {
 }
 //rotation client side FF + safari (fuck IE)
 function imrot(angle) { 
-    $('#img').css("-webkit-transform",  'rotate(' + angle + 'deg)');
-    $('#img').css("-moz-transform",  'rotate(' + angle + 'deg)');
+var arg= 'rotate(' + angle + 'deg)';
+    if ( angle == '90' || angle == '270'  ) { 
+    arg+= " scale(0.67, 0.67)";
+    }
+ $.each([ '-moz-transform', '-webkit-fransform', 'transform' ], 
+    function () { $('#img').css( '' + this,'' +  arg); }
+    );
 }
 
 //FB share link
@@ -72,6 +79,8 @@ $('a').not('.noimage').each(
 
 //generate the image modal 
 function loadme(el) { 
+    var width=$("#width").val();
+    width=width ? width : "700px";
     $('#image').attr('tilte','' );
     var link=$(el).attr("href");
     var deb='<div class=dialtit >';
@@ -83,7 +92,7 @@ function loadme(el) {
     var next= '<button id=next  >&gt;&gt;</button> ';
     var fin='</div>';
     $('#image').html( deb + prev + 'image : ' + link   +  next + '<br/>' + rot1 + rot2 + rot3 + rot4 + fin  + 
-    '<div id=imgc>' +  embed(link, "500px") + share(link) + '</div>' );
+    '<div id=imgc>' +  embed(link, width) + share(link) + '</div>' );
 
     //$("button").button();
     $("#next").click(function() { $(el).next().click() });
@@ -102,7 +111,7 @@ function loadme(el) {
             });
     $('button').button();
     $('#image').dialog( { 
-        heigth: '600px',
+        heigth: '800px',
         width: '90%',
         position: [ 'center' , 100 ]
 
