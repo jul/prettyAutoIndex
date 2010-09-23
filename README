@@ -1,8 +1,27 @@
-# Pretty Autoindex
-Auto index is the default mode for apacge for showing data.
+Publication on the web of multimedia gallery is now as easy as just dropping file in winscp :) 
 
-It is sure the most convenient way to share photo (only one bulk scp) but it is ugly
+Bored of geeks, welcome back to plain old apache core features, no DB, no PHP, no framework needed for this to work. 
+You just needed apache >= 1.0
 
-# install 
 
-in course
+Transforming apache default mode for directory into a client side web gallery for multimedia types 
+
+It relies heavily on modern browser capacity : 
+* <audio>, <video>, <embed> HTML5 new tags ; 
+* css3 rotation 
+* jquery
+
+Added a fb share for each media so that you wont have to administrate comment
+
+Can support more than one theme 
+
+Customisable with the sneaky use of <input type=hidden > tags
+
+Can load a desc.html (where you put your custom values also) in order to have a per directory 
+description
+
+A fortune as usual cause I luv fortunes
+
+no new security hole (if you give ssh/ftp access to malvolent people you sure should be fired) 
+
+
