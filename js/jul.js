@@ -46,8 +46,9 @@ var arg= 'rotate(' + angle + 'deg)';
 
 //FB share link
 function share(link) {
-    return ( '<a name="fb_share" type="button_count" ' 
-            + ' share_url="' + realpath(link) + '">Partager</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>');
+    return ( '<a name="fb_share" type="button_count"  ' +  ' share_url="' + realpath(link) + 
+    '" href="http://www.facebook.com/sharer.php" >Partager</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">' +
+    '</script>');
 }
 
 /// UGLY dispatch table to come
