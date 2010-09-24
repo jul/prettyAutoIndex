@@ -1,6 +1,5 @@
 //from phpjs
 
-
 function realpath (path) {
     // http://kevin.vanzonneveld.net
     // +   original by: mk.keck
@@ -51,32 +50,11 @@ function share(link) {
     '</script>');
 }
 
-/// UGLY dispatch table to come
-function embed(link,width) { 
-    if( link.match('ogg$') ) { 
-        return ('<video autoplay width="' + width +
-        '" src="' + link + '" controls=true >' +
-        'to watch video please use a real web browser</video>' +
-        '<br/><a href="' +link + '">Here</a>' );
-    }
-    if( link.match('(mpe?g|avi)$') ) { 
-        return( '<embed width="' + width + '" height="' + width + '"  name="plugin" src="' +
-        link + '" type="video/x-msvideo" >' + 
-        '<br/><a href="' +link + '">Here</a><br/>' );
-    } 
-
-    return ( '<a href="' + link + '"><img id=img width="' + 
-        width + '"  src="' + link + '" /></a>');
-
- }
-           
 
            
 $('pre > a').not('.noimage').each( 
         function () { $(this).attr("id",$(this).attr("href")) }
 );
-
-
 
 //generate the image modal 
 function loadme(el) { 
@@ -92,8 +70,11 @@ function loadme(el) {
     var prev= '<button id=prev  >&lt;&lt;</button>';
     var next= '<button id=next  >&gt;&gt;</button> ';
     var fin='</div>';
+    embeder.href=link;
+    embeder.width=width;
+
     $('#image').html( deb + prev + 'image : ' + link   +  next + '<br/>' + rot1 + rot2 + rot3 + rot4 + fin  + 
-    '<div id=imgc>' +  embed(link, width) + share(link) + '</div>' );
+    '<div id=imgc>' +  embeder.popup() + share(link) + '</div>' );
 
     //$("button").button();
     $("#next").click(function() { $(el).next().click() });
