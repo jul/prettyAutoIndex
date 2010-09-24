@@ -21,12 +21,15 @@ embeder = {
         mp3:    'audio/mpeg',
         wmv : 'video/x-ms-wmv'
    },
+   dlMe: function() { 
+    return ('<br/><a href="' + this.href + '" >Download here</a><br/>');
+   },
    //so we can use an hidden div to set it to .... vlc plugin for instance
    defVidType: 'video/x-msvideo',
     type2popup :  {
         vid : function() { 
             embd=embeder;
-            return('<video id=img width="' + embd.width + '" src="' + embd.href + '"/>' )
+            return('<video id=img width="' + embd.width + '" src="' + embd.href + '"/>'  );
         },
         embed : function() { 
             embd=embeder;
@@ -34,7 +37,7 @@ embeder = {
                 (   embd.extension in embd.mimetype )      ? 
                     embd.mimetype[embd.extension]       : 
                     embd.defVidType ) + 
-                '" />' )
+                '" /> ' )
         },
         aud : function() { 
             embd=embeder;
@@ -63,7 +66,7 @@ embeder = {
         this.ext();
         //throw exception if this.href==null
         popup=(this.extension in this.ext2type)                         ?  
-                popup= this.type2popup[this.ext2type[this.extension]]() :
+                popup= this.type2popup[this.ext2type[this.extension]]() + this.dlMe() :
                 '<img id=img width="' + this.width + '" src="' + this.href + '" />';
         this.clean();
         return popup;
