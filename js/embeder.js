@@ -31,6 +31,10 @@ embeder = {
             embd=embeder;
             return('<video controls=true autoplay=true id=img width="' + embd.width + '" src="' + embd.href + '"/>'  );
         },
+        flash: function() { 
+            
+            return ( '<div isflash=true id=img >Flash Content</div>' );
+            },
         embed : function() { 
             embd=embeder;
             return('<embed id=img width="' + embd.width + '"  src="' + embd.href + '" type="' + ( 
@@ -54,7 +58,8 @@ embeder = {
         avi:    'embed',
         mkv:    'embed',
         mp4:    'embed',
-        mp3:    'embed'
+        mp3:    'embed',
+        swf:    'flash'
    }, 
 
    clean: function() { 

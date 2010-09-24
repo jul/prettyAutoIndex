@@ -58,6 +58,7 @@ $('pre > a').not('.noimage').each(
 
 var copyright=$("#copyright").val() ?  $("#copyright").val() : $("#defaultcopyright").val()   ;
 notice="<copyright>" + copyright + "</copyright>" ;
+var flashversion=$("#flashversion").val() ? $("#flashversion").val() : '10.0.0';
 
 //generate the image modal 
 function loadme(el) { 
@@ -79,6 +80,13 @@ function loadme(el) {
     $('#image').html( deb + prev +   ' ' + rot1 + rot2 + rot3 + rot4 + ' ' + next + fin  + 
     '<div id=imgc>' +  embeder.popup() + share(link) + notice + '</div>' );
     $('#img').attr("hasrot") || $('rot').hide();  
+
+    $('#img').attr("isflash") && swfobject.embedSWF(
+        link , 
+        'img', 
+        width,
+        width, 
+        flashversion);
 
     //$("button").button();
     $("#next").click(function() { $(el).next().click() });
