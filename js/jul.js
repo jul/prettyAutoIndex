@@ -56,6 +56,9 @@ $('pre > a').not('.noimage').each(
         function () { $(this).attr("id",$(this).attr("href")) }
 );
 
+var copyright=$("#copyright").val() ?  $("#copyright").val() : $("#defaultcopyright").val()   ;
+notice="<copyright>" + copyright + "</copyright>" ;
+
 //generate the image modal 
 function loadme(el) { 
     var width=$("#width").val();
@@ -73,8 +76,8 @@ function loadme(el) {
     embeder.href=link;
     embeder.width=width;
 
-    $('#image').html( deb + prev + 'image : ' + link   +  next + '<br/>' + rot1 + rot2 + rot3 + rot4 + fin  + 
-    '<div id=imgc>' +  embeder.popup() + share(link) + '</div>' );
+    $('#image').html( deb + prev +   ' ' + rot1 + rot2 + rot3 + rot4 + ' ' + next + fin  + 
+    '<div id=imgc>' +  embeder.popup() + share(link) + notice + '</div>' );
 
     //$("button").button();
     $("#next").click(function() { $(el).next().click() });
@@ -95,6 +98,7 @@ function loadme(el) {
     $('#image').dialog( { 
         heigth: '800px',
         width: '90%',
+        title: realpath(link),
         position: [ 'center' , 100 ]
 
     });   

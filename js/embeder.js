@@ -22,7 +22,7 @@ embeder = {
         wmv : 'video/x-ms-wmv'
    },
    dlMe: function() { 
-    return ('<br/><a href="' + this.href + '" >Download here</a><br/>');
+    return ('<br/><a href="' + this.href + '" ><img src="/org/images/download.png" style="border:0px" /> </a><br/>');
    },
    //so we can use an hidden div to set it to .... vlc plugin for instance
    defVidType: 'video/x-msvideo',
@@ -66,10 +66,11 @@ embeder = {
         this.ext();
         //throw exception if this.href==null
         popup=(this.extension in this.ext2type)                         ?  
-                popup= this.type2popup[this.ext2type[this.extension]]() + this.dlMe() :
+                popup= this.type2popup[this.ext2type[this.extension]]()  :
                 '<img id=img width="' + this.width + '" src="' + this.href + '" />';
+        popup+=  this.dlMe();
         this.clean();
-        return popup;
+        return popup ;
     },
 };
 
