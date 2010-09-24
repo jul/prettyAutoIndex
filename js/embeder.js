@@ -29,7 +29,7 @@ embeder = {
     type2popup :  {
         vid : function() { 
             embd=embeder;
-            return('<video id=img width="' + embd.width + '" src="' + embd.href + '"/>'  );
+            return('<video controls=true autoplay=true id=img width="' + embd.width + '" src="' + embd.href + '"/>'  );
         },
         embed : function() { 
             embd=embeder;
@@ -41,7 +41,7 @@ embeder = {
         },
         aud : function() { 
             embd=embeder;
-            return('<audio id=img width="' + embd.width + '" src="' + embd.href + '"/>' )
+            return('<audio control=true autoplay=true id=img width="' + embd.width + '" src="' + embd.href + '"/>' )
         }
    },
    ext2type : { 
@@ -67,7 +67,7 @@ embeder = {
         //throw exception if this.href==null
         popup=(this.extension in this.ext2type)                         ?  
                 popup= this.type2popup[this.ext2type[this.extension]]()  :
-                '<img id=img width="' + this.width + '" src="' + this.href + '" />';
+                '<img hasrot=true id=img width="' + this.width + '" src="' + this.href + '" />';
         popup+=  this.dlMe();
         this.clean();
         return popup ;

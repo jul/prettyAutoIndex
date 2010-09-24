@@ -66,10 +66,10 @@ function loadme(el) {
     $('#image').attr('tilte','' );
     var link=$(el).attr("href");
     var deb='<div class=dialtit >';
-    var rot1="<button id=rot1 >+90</button>";
+    var rot1="<rot><button id=rot1 >+90</button>";
     var rot2="<button id=rot2 >+180</button>";
     var rot3="<button id=rot3 >-90</button>";
-    var rot4="<button id=rot4 >2 &pi;</button>";
+    var rot4="<button id=rot4 >2 &pi;</button></rot>";
     var prev= '<button id=prev  >&lt;&lt;</button>';
     var next= '<button id=next  >&gt;&gt;</button> ';
     var fin='</div>';
@@ -78,6 +78,7 @@ function loadme(el) {
 
     $('#image').html( deb + prev +   ' ' + rot1 + rot2 + rot3 + rot4 + ' ' + next + fin  + 
     '<div id=imgc>' +  embeder.popup() + share(link) + notice + '</div>' );
+    $('#img').attr("hasrot") || $('rot').hide();  
 
     //$("button").button();
     $("#next").click(function() { $(el).next().click() });
