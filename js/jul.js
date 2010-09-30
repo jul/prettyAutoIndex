@@ -62,6 +62,7 @@ var flashversion=$("#flashversion").val() ? $("#flashversion").val() : '10.0.0';
 
 //generate the image modal 
 var rotindex=0;
+var keybindingok=false;
 function loadme(el) { 
     var width=$("#width").val();
     width=width ? width : "700px";
@@ -105,15 +106,19 @@ function loadme(el) {
             imrot(0);
             });
     $('button').button();
-     $(document).keydown(function(event) {
+        if(false== keybindingok) {
+        $(document).keydown(function(event) {
                 
                 switch (event.keyCode) {
                     case 37: $('#prev').click()  ; break;
                     case 38: rotindex=(rotindex+1) % 4; $('#rot' + (rotindex + 1) ).click();  break;
                     case 39: $('#next').click(); break;
                     case 20: rotindex=(rotindex-1) % 4; $('#rot' + (rotindex + 1) ).click();  break;
-                }
+                };
+         keybindingok=1;
+
             });
+            }
 
     $('#image').dialog( { 
         heigth: '800px',
