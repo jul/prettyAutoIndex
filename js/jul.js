@@ -113,7 +113,7 @@ function loadme(el) {
                     case 37: $('#prev').click()  ; break;
                     case 38: rotindex=(rotindex+1) % 4; $('#rot' + (rotindex + 1) ).click();  break;
                     case 39: $('#next').click(); break;
-                    case 20: rotindex=(rotindex-1) % 4; $('#rot' + (rotindex + 1) ).click();  break;
+                    case 20: rotindex=(rotindex-1) % 4 >= 0 ? (rotindex-1) % 4  : 3; $('#rot' + (rotindex + 1) ).click();  break;
                 };
          keybindingok=1;
 
