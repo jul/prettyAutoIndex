@@ -1,0 +1,24 @@
+embeder= { 
+    ext: function() { 
+        this.extension=this.href.split('.').reverse()[0].toLowercase();
+    },
+   generate: {
+        vid : function() { 
+            return('<video src="' + this.href + '"/>' )
+        },
+        aud : function() { 
+            return('<audio src="' + this.href + '"/>' )
+        }
+},
+    ext2type : { 
+        ogg : "vid",
+        wav:    "aud"
+    },
+    init: function(href) { 
+              this.href=href;
+              this.extension=this.ext(href);
+              this.generate[ext2type[this.extension]();
+    }
+
+};
+alert("ok");
