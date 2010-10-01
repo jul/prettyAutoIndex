@@ -38,7 +38,7 @@ var arg= 'rotate(' + angle + 'deg)';
     if ( angle == '90' || angle == '270'  ) { 
     arg+= " scale(0.67, 0.67)";
     }
- $.each([ '-moz-transform', '-webkit-fransform', 'transform' ], 
+ $.each([ '-moz-transform', '-webkit-transform', 'transform' ], 
     function () { $('#img').css( '' + this,'' +  arg); }
     );
 }
@@ -122,12 +122,15 @@ function loadme(el) {
 
     $('#image').dialog( { 
         heigth: '800px',
+        show:   'slide',
+        modal: true,
         width: '90%',
         title: realpath(link),
         position: [ 'center' , 100 ]
 
     });   
     $('#image').dialog('open');
+    $('#image').show("slide");
 }
 $('pre > a').not('.noimage').click(function(event) { 
         event.preventDefault();
