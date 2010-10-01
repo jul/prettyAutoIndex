@@ -134,4 +134,4 @@ $('pre > a').not('.noimage').click(function(event) {
         loadme(this);
         }
         );
-
+loadme($('pre > a').not('.noimage')[0]);
