@@ -62,8 +62,7 @@ var flashversion=$("#flashversion").val() ? $("#flashversion").val() : '10.0.0';
 
 //generate the image modal 
 var rotindex=0;
-var keybindingok=false;
-function loadme(el) { 
+function loadme(el,direction) { 
     var width=$("#width").val();
     width=width ? width : "700px";
     $('#image').attr('tilte','' );
@@ -91,8 +90,8 @@ function loadme(el) {
         flashversion);
 
     //$("button").button();
-    $("#next").click(function() { $(el).next().click() });
-    $("#prev").click(function() { $(el).prev().click() });
+    $("#next").click(function() { loadme( $($(el).next()),"right") });
+    $("#prev").click(function() { loadme( $($(el).prev()),"left") });
     $('#rot1').click(function() { 
             imrot(90);
             });
@@ -106,35 +105,29 @@ function loadme(el) {
             imrot(0);
             });
     $('button').button();
-        if(false== keybindingok) {
-        $(document).keydown(function(event) {
-                
+                $(document).unbind('keypress'); 
+        $(document).keypress(function(event) {
                 switch (event.keyCode) {
-                    case 37: $('#prev').click()  ; break;
-                    case 38: rotindex=(rotindex+1) % 4; $('#rot' + (rotindex + 1) ).click();  break;
-                    case 39: $('#next').click(); break;
-                    case 20: rotindex=(rotindex-1) % 4 >= 0 ? (rotindex-1) % 4  : 3; $('#rot' + (rotindex + 1) ).click();  break;
+                    case 39: $('#next').click()  ; break;
+                    case 38: rotindex+=1; rotindex %= 4; imrot(  rotindex  * 90  + "");  break;
+                    case 37: $('#prev').click(); break;
+                    case 20: rotindex=(rotindex-1) % 4 >= 0 ? (rotindex-1) % 4  : 3; imrot( rotindex * 90 + "") ;  break;
                 };
-         keybindingok=1;
 
             });
-            }
-
     $('#image').dialog( { 
-        heigth: '800px',
-        show:   'slide',
+        heigth: '100px',
+        show:'slide',
         modal: true,
         width: '90%',
         title: realpath(link),
         position: [ 'center' , 100 ]
 
     });   
-    $('#image').dialog('open');
-    $('#image').show("slide");
 }
 $('pre > a').not('.noimage').click(function(event) { 
         event.preventDefault();
-        loadme(this);
+        loadme(this,"right");
         }
         );
-loadme($('pre > a').not('.noimage')[0]);
+loadme($('pre > a').not('.noimage')[0], 'right');
