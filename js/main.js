@@ -14,7 +14,7 @@ $(document).ready(
             } else { 
                 $.getScript("http://jqueryui.com/themeroller/themeswitchertool/",
                     function() { 
-                        $('#switcher').themeswitcher( { loadTheme : "Cuppertino" } ); 
+                        $('#switcher').themeswitcher( { loadTheme : "darkness" } ); 
                         $('#switcher > a').addClass("noimage");
                         $('pre ').addClass('ui-widget-content');
                         $.getScript("/org/js/jquery-ui-1.8.5.custom.min.js", 
