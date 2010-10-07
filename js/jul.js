@@ -109,7 +109,7 @@ function loadme(el,direction) {
             imrot(0);
             });
     $('button').button();
-                $(document).unbind('keypress'); 
+                $(document).unbind('keydown'); 
         $(document).keydown(function(event) {
                 switch (event.which ) {
                     case RIGHT_ARROW: $('#next').click()  ; break;
