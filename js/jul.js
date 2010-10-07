@@ -1,5 +1,9 @@
 //from phpjs
 
+var UP_ARROW=38;
+var DOWN_ARROW=40;
+var LEFT_ARROW=37;
+var RIGHT_ARROW=39;
 function realpath (path) {
     // http://kevin.vanzonneveld.net
     // +   original by: mk.keck
@@ -106,12 +110,12 @@ function loadme(el,direction) {
             });
     $('button').button();
                 $(document).unbind('keypress'); 
-        $(document).keypress(function(event) {
-                switch (event.keyCode) {
-                    case 39: $('#next').click()  ; break;
-                    case 38: rotindex+=1; rotindex %= 4; imrot(  rotindex  * 90  + "");  break;
-                    case 37: $('#prev').click(); break;
-                    case 20: rotindex=(rotindex-1) % 4 >= 0 ? (rotindex-1) % 4  : 3; imrot( rotindex * 90 + "") ;  break;
+        $(document).keydown(function(event) {
+                switch (event.which ) {
+                    case RIGHT_ARROW: $('#next').click()  ; break;
+                    case UP_ARROW: rotindex+=1; rotindex %= 4; imrot(  rotindex  * 90  + "");  break;
+                    case LEFT_ARROW : $('#prev').click(); break;
+                    case DOWN_ARROW: rotindex=(rotindex-1) % 4 >= 0 ? (rotindex-1) % 4  : 3; imrot( rotindex * 90 + "") ;  break;
                 };
 
             });
