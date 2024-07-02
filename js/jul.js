@@ -1,9 +1,9 @@
 //from phpjs
 
-var UP_ARROW=38;
-var DOWN_ARROW=40;
-var LEFT_ARROW=37;
-var RIGHT_ARROW=39;
+var UP_ARROW=73;
+var DOWN_ARROW=75;
+var LEFT_ARROW=74;
+var RIGHT_ARROW=76;
 function realpath (path) {
     // http://kevin.vanzonneveld.net
     // +   original by: mk.keck
@@ -118,12 +118,12 @@ function loadme(el,direction) {
         width: '90%',
         title: realpath(link),
         position: [ 'center' , 100 ]
-
     });   
 }
-$('pre > a').not('.noimage').click(function(event) { 
+$('pre > a').not('.noimage').click(
+    function(event) { 
         event.preventDefault();
         loadme(this,"right");
-        }
-        );
-loadme($('pre > a').not('.noimage')[0], 'right');
+    }
+);
+//loadme($('pre > a').not('.noimage')[0], 'right');
